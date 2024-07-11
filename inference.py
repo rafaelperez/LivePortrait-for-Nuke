@@ -59,7 +59,9 @@ def main():
 
     # run
     live_portrait_pipeline.execute(args)
-
+    # live_portrait_pipeline_cp = torch.compile(live_portrait_pipeline.execute, backend="inductor")
+    # with torch.no_grad():
+    # live_portrait_pipeline_cp(args)
 
 if __name__ == "__main__":
     main()

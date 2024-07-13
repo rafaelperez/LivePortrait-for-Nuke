@@ -347,7 +347,7 @@ class LivePortraitWrapperAnimal(LivePortraitWrapper):
         if inference_cfg.flag_force_cpu:
             self.device = 'cpu'
         else:
-            try: 
+            try:
                 if torch.backends.mps.is_available():
                     self.device = 'mps'
                 else:

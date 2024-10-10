@@ -10,6 +10,7 @@ __pycache__/
 **/*.pth
 **/*.onnx
 **/*.cat
+**/*.zip
 
 pretrained_weights/*
 

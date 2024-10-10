@@ -537,7 +537,6 @@ push $N34ad1850
   inputs 2
   recompileCount 36
   ProgramGroup 1
-  KernelDescription "3 \"MMult\" iterate componentWise e9fa177c4035dde8e79c777cd319c6982dc6aa2a49fb106fd98f4a4aadfbd26d 3 \"src_a\" Read Random \"src_b\" Read Random \"dst\" Write Point 2 \"transpose_a\" Bool 1 AA== \"transpose_b\" Bool 1 AA== 2 \"transpose_a\" 1 1 Default \"transpose_b\" 1 1 Default 0"
   kernelSource "kernel MMult : ImageComputationKernel<eComponentWise> \{\n  Image<eRead, eAccessRandom, eEdgeClamped> src_a;\n  Image<eRead, eAccessRandom, eEdgeClamped> src_b;\n  Image<eWrite, eAccessPoint> dst;\n\nparam:\n    bool transpose_a = false;\n    bool transpose_b = false;\n\nlocal:\n\n  void define() \{\n  \}\n\n  void init() \{\n  \}\n\n  void process(int3 pos) \{\n      float3x3 A, B, C;\n      \n      for (int i = 0; i < 3; i++) \{\n          for (int j = 0; j < 3; j++) \{\n          A\[i]\[j] = src_a(i * 3 + j, 0);\n          B\[i]\[j] = src_b(i * 3 + j, 0);\n          \}\n      \}\n\n      if (transpose_a) \{\n          A.transpose();\n      \}\n\n      if (transpose_b) \{\n          B.transpose();\n      \}\n\n      C = A * B;\n      float result\[9];\n\n      for (int i = 0; i < 3; i++) \{\n          for (int j = 0; j < 3; j++) \{\n          result\[i * 3 + j] = C\[i]\[j];\n          \}\n      \}\n      dst() = result\[pos.x];\n  \}\n\};\n"
   useGPUIfAvailable false
   rebuild ""
@@ -552,7 +551,6 @@ push $N34ad1850
   inputs 2
   recompileCount 36
   ProgramGroup 1
-  KernelDescription "3 \"MMult\" iterate componentWise e9fa177c4035dde8e79c777cd319c6982dc6aa2a49fb106fd98f4a4aadfbd26d 3 \"src_a\" Read Random \"src_b\" Read Random \"dst\" Write Point 2 \"transpose_a\" Bool 1 AA== \"transpose_b\" Bool 1 AA== 2 \"transpose_a\" 1 1 Default \"transpose_b\" 1 1 Default 0"
   kernelSource "kernel MMult : ImageComputationKernel<eComponentWise> \{\n  Image<eRead, eAccessRandom, eEdgeClamped> src_a;\n  Image<eRead, eAccessRandom, eEdgeClamped> src_b;\n  Image<eWrite, eAccessPoint> dst;\n\nparam:\n    bool transpose_a = false;\n    bool transpose_b = false;\n\nlocal:\n\n  void define() \{\n  \}\n\n  void init() \{\n  \}\n\n  void process(int3 pos) \{\n      float3x3 A, B, C;\n      \n      for (int i = 0; i < 3; i++) \{\n          for (int j = 0; j < 3; j++) \{\n          A\[i]\[j] = src_a(i * 3 + j, 0);\n          B\[i]\[j] = src_b(i * 3 + j, 0);\n          \}\n      \}\n\n      if (transpose_a) \{\n          A.transpose();\n      \}\n\n      if (transpose_b) \{\n          B.transpose();\n      \}\n\n      C = A * B;\n      float result\[9];\n\n      for (int i = 0; i < 3; i++) \{\n          for (int j = 0; j < 3; j++) \{\n          result\[i * 3 + j] = C\[i]\[j];\n          \}\n      \}\n      dst() = result\[pos.x];\n  \}\n\};\n"
   useGPUIfAvailable false
   rebuild ""
@@ -565,7 +563,6 @@ push $N34ad1850
   inputs 2
   recompileCount 36
   ProgramGroup 1
-  KernelDescription "3 \"MMult\" iterate componentWise e9fa177c4035dde8e79c777cd319c6982dc6aa2a49fb106fd98f4a4aadfbd26d 3 \"src_a\" Read Random \"src_b\" Read Random \"dst\" Write Point 2 \"transpose_a\" Bool 1 AA== \"transpose_b\" Bool 1 AA== 2 \"transpose_a\" 1 1 Default \"transpose_b\" 1 1 Default 0"
   kernelSource "kernel MMult : ImageComputationKernel<eComponentWise> \{\n  Image<eRead, eAccessRandom, eEdgeClamped> src_a;\n  Image<eRead, eAccessRandom, eEdgeClamped> src_b;\n  Image<eWrite, eAccessPoint> dst;\n\nparam:\n    bool transpose_a = false;\n    bool transpose_b = false;\n\nlocal:\n\n  void define() \{\n  \}\n\n  void init() \{\n  \}\n\n  void process(int3 pos) \{\n      float3x3 A, B, C;\n      \n      for (int i = 0; i < 3; i++) \{\n          for (int j = 0; j < 3; j++) \{\n          A\[i]\[j] = src_a(i * 3 + j, 0);\n          B\[i]\[j] = src_b(i * 3 + j, 0);\n          \}\n      \}\n\n      if (transpose_a) \{\n          A.transpose();\n      \}\n\n      if (transpose_b) \{\n          B.transpose();\n      \}\n\n      C = A * B;\n      float result\[9];\n\n      for (int i = 0; i < 3; i++) \{\n          for (int j = 0; j < 3; j++) \{\n          result\[i * 3 + j] = C\[i]\[j];\n          \}\n      \}\n      dst() = result\[pos.x];\n  \}\n\};\n"
   useGPUIfAvailable false
   rebuild ""
@@ -588,7 +585,6 @@ push $N3fccf800
   inputs 2
   recompileCount 39
   ProgramGroup 1
-  KernelDescription "3 \"MMult\" iterate componentWise 14b7951603aeee59b6a3399feaacf863e34d3135d0ac80acb83ea01f72b8fd8f 3 \"src_a\" Read Random \"src_b\" Read Random \"dst\" Write Point 0 0 0"
   kernelSource "kernel MMult : ImageComputationKernel<eComponentWise> \{\n  Image<eRead, eAccessRandom, eEdgeClamped> src_a;\n  Image<eRead, eAccessRandom, eEdgeClamped> src_b;\n  Image<eWrite, eAccessPoint> dst;\n\nparam:\n\nlocal:\n\n  void define() \{\n  \}\n\n  void init() \{\n  \}\n\n  void process(int3 pos) \{\n    float x_c_s\[63];\n    float R_new\[9];\n    float result\[63];\n\n    for (int i = 0; i < 63; i++) \{\n        x_c_s\[i] = src_a(i, 0);\n    \}\n\n    for (int i = 0; i < 9; i++) \{\n        R_new\[i] = src_b(i, 0);\n    \}\n\n    // MMult (21x3 * 3x3 = 21x3)\n    for (int i = 0; i < 21; i++) \{\n        for (int j = 0; j < 3; j++) \{\n            result\[i * 3 + j] = 0;\n            for (int k = 0; k < 3; k++) \{\n                result\[i * 3 + j] += x_c_s\[i * 3 + k] * R_new\[k * 3 + j];\n            \}\n        \}\n    \}\n\n    dst() = result\[pos.x];\n  \}\n\};\n\n"
   useGPUIfAvailable false
   rebuild ""

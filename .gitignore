@@ -9,6 +9,7 @@ __pycache__/
 **/*.pt
 **/*.pth
 **/*.onnx
+**/*.cat
 
 pretrained_weights/*
 
@@ -22,6 +23,7 @@ pretrained_weights/*
 *.code-workspace
 
 # Temporary files or benchmark resources
+**/*.autosave
 animations/*
 build/*
 tmp/*

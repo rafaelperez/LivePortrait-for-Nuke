@@ -1,8 +1,6 @@
 Group {
  inputs 0
  name LivePortrait
- xpos 2835
- ypos 2071
  addUserKnob {20 LivePortraitTab l LivePortrait t LivePortrait}
  addUserKnob {26 quickStart l "" +STARTLINE T "To get the best results, crop your animation reference's face to fit within a <b>512x512</b> frame."}
  addUserKnob {26 outputOptions_divider l "<b>Output Options</b>"}
@@ -51,14 +49,14 @@ Group {
  Shuffle2 {
   fromInput1 {{0} B}
   fromInput2 {{0} B}
-  name Shuffle3
+  name Shuffle1
   xpos -40
   ypos 542
  }
  Crop {
   box {0 0 {width} {height}}
   crop false
-  name Crop2
+  name Crop1
   xpos -40
   ypos 590
  }
@@ -68,24 +66,24 @@ Group {
   xpos -40
   ypos 656
  }
-set N3ec85f50 [stack 0]
+set N2ebbb6f0 [stack 0]
  Reformat {
   type "to box"
   box_width {{"max(width, 512)"}}
-  name Reformat2
+  name Reformat1
   xpos 70
   ypos 710
  }
  Colorspace {
   colorspace_out sRGB
-  name Colorspace10
+  name Colorspace1
   xpos 70
   ypos 758
  }
  Inference {
   modelFile "\[lsearch -inline \[plugins -all live_portrait_face_detection.cat] *.cat]"
   serialiseKnob {crop_cfg_scale:2.3;}
-  name Inference11
+  name Inference1
   tile_color 0xdfff00ff
   label LivePortrait_FaceDetection
   xpos 70
@@ -95,7 +93,7 @@ set N3ec85f50 [stack 0]
   box {0 {height-256 x111 1024} 256 {height}}
   reformat true
   crop false
-  name Crop23
+  name Crop2
   xpos 70
   ypos 902
  }
@@ -104,22 +102,22 @@ set N3ec85f50 [stack 0]
   xpos 104
   ypos 978
  }
-set N3f9c0880 [stack 0]
+set N946cb8d0 [stack 0]
  Dot {
-  name Dot3
+  name Dot2
   xpos 324
   ypos 978
  }
-set N605dff60 [stack 0]
+set Nd42b6630 [stack 0]
  Dot {
-  name Dot6
+  name Dot3
   xpos 654
   ypos 978
  }
  Inference {
   modelFile "\[lsearch -inline \[plugins -all live_portrait_motion_extractor.cat] *.cat]"
   serialiseKnob {}
-  name Inference4
+  name Inference2
   tile_color 0xdfff00ff
   label LivePortrait_MotionExtractor
   xpos 620
@@ -129,38 +127,38 @@ set N605dff60 [stack 0]
   fromInput1 {{0} B}
   fromInput2 {{0} B}
   mappings "4 rgba.red 0 0 rgba.red 0 0 rgba.red 0 0 rgba.green 0 1 rgba.red 0 0 rgba.blue 0 2 rgba.red 0 0 rgba.alpha 0 3"
-  name Shuffle1
+  name Shuffle2
   xpos 620
   ypos 1190
  }
-set N3ec9bb10 [stack 0]
+set N3fccf800 [stack 0]
  Crop {
   box {0 252 63 253}
   reformat true
   crop false
-  name Crop7
+  name Crop3
   label x_s
   xpos 400
   ypos 1256
  }
  NoOp {
-  name NoOp23
+  name NoOp1
   label x_s
   xpos 400
   ypos 2792
  }
  Crop {
   box {0 0 63 1}
-  name Crop38
+  name Crop4
   xpos 400
   ypos 2870
  }
-set N3fd17740 [stack 0]
+set N94506e00 [stack 0]
  Transform {
   translate {0 63}
   filter impulse
   black_outside false
-  name Transform7
+  name Transform1
   xpos 510
   ypos 2918
  }
@@ -171,40 +169,40 @@ set N3fd17740 [stack 0]
   xpos 1940
   ypos 2366
  }
-set N60dd9ac0 [stack 0]
+set N780b67d0 [stack 0]
  Transform {
   translate {30 0}
   center {128 128}
   filter impulse
   clamp true
   black_outside false
-  name Transform21
+  name Transform2
   xpos 1940
   ypos 2486
  }
-push $N60dd9ac0
+push $N780b67d0
  Transform {
   translate {22 0}
   center {128 128}
   filter impulse
   clamp true
   black_outside false
-  name Transform20
+  name Transform3
   xpos 1830
   ypos 2462
  }
-push $N3ec9bb10
+push $N3fccf800
  Crop {
   box {0 249 3 250}
   reformat true
   crop false
-  name Crop31
+  name Crop5
   label "x_s_info\['t']"
   xpos 510
   ypos 1256
  }
  NoOp {
-  name NoOp18
+  name NoOp2
   label "x_s_info\['t']"
   xpos 510
   ypos 1832
@@ -217,40 +215,43 @@ push $N3ec9bb10
   number 1
  }
  Dot {
-  name Dot7
+  name Dot4
   xpos 2194
   ypos 546
  }
-set N3bfdefc0 [stack 0]
+set N5425caf0 [stack 0]
  Dot {
-  name Dot9
+  name Dot5
   xpos 1754
   ypos 546
  }
  Shuffle2 {
   fromInput1 {{0} B}
   fromInput2 {{0} B}
-  name Shuffle4
+  name Shuffle3
   xpos 1720
   ypos 662
  }
  Colorspace {
   colorspace_out rec709
-  name Colorspace11
+  name Colorspace2
   xpos 1720
   ypos 734
  }
-set N60276bd0 [stack 0]
+set Nc99833e0 [stack 0]
  Reformat {
+  type "to box"
+  box_width 256
+  box_height 256
   resize distort
-  name Reformat1
+  name Reformat2
   xpos 1720
   ypos 806
  }
  Crop {
   box {0 0 256 256}
   crop false
-  name Crop3
+  name Crop6
   label I_d_i
   xpos 1720
   ypos 872
@@ -258,7 +259,7 @@ set N60276bd0 [stack 0]
  Inference {
   modelFile "\[lsearch -inline \[plugins -all live_portrait_motion_extractor.cat] *.cat]"
   serialiseKnob {}
-  name Inference1
+  name Inference3
   tile_color 0xdfff00ff
   label LivePortrait_MotionExtractor
   xpos 1720
@@ -268,35 +269,35 @@ set N60276bd0 [stack 0]
   fromInput1 {{0} B}
   fromInput2 {{0} B}
   mappings "4 rgba.red 0 0 rgba.red 0 0 rgba.red 0 0 rgba.green 0 1 rgba.red 0 0 rgba.blue 0 2 rgba.red 0 0 rgba.alpha 0 3"
-  name Shuffle6
+  name Shuffle4
   xpos 1720
   ypos 1022
  }
-set N3cf27ce0 [stack 0]
+set N816ba210 [stack 0]
  Dot {
-  name Dot8
+  name Dot6
   xpos 1534
   ypos 1122
  }
  Dot {
-  name Dot4
+  name Dot7
   xpos 1534
   ypos 1650
  }
-set N604eeb20 [stack 0]
+set N81626820 [stack 0]
  Crop {
   box {0 249 3 250}
   reformat true
   crop false
-  name Crop33
+  name Crop7
   label "x_d_info\['t']"
   xpos 620
   ypos 1832
  }
-set N3de22e60 [stack 0]
-push $N3de22e60
+set N814a0620 [stack 0]
+push $N814a0620
  FrameHold {
-  name FrameHold6
+  name FrameHold2
   label "x_d_0_info\['t']"
   xpos 730
   ypos 1874
@@ -304,14 +305,14 @@ push $N3de22e60
  Merge2 {
   inputs 2
   operation minus
-  name Merge8
+  name Merge1
   xpos 620
   ypos 1934
  }
  Merge2 {
   inputs 2
   operation plus
-  name Merge9
+  name Merge2
   xpos 510
   ypos 1982
  }
@@ -330,7 +331,7 @@ push $N3de22e60
   box_fixed true
   resize distort
   filter impulse
-  name Reformat8
+  name Reformat3
   label t_new
   xpos 510
   ypos 2120
@@ -338,41 +339,41 @@ push $N3de22e60
  Tile {
   columns 21
   filter impulse
-  name Tile4
+  name Tile1
   label "reshape 3x1: 63x1"
   xpos 510
   ypos 2192
  }
-push $N3ec9bb10
+push $N3fccf800
  Crop {
   box {0 251 63 252}
   reformat true
   crop false
-  name Crop29
+  name Crop8
   label "x_s_info\['exp']"
   xpos 730
   ypos 1256
  }
  NoOp {
-  name NoOp11
+  name NoOp3
   label "x_s_info\['exp']"
   xpos 1390
   ypos 1832
  }
-push $N604eeb20
+push $N81626820
  Crop {
   box {0 251 63 252}
   reformat true
   crop false
-  name Crop30
+  name Crop9
   label "x_d_info\['exp']"
   xpos 1500
   ypos 1832
  }
-set N401e3500 [stack 0]
-push $N401e3500
+set N35153160 [stack 0]
+push $N35153160
  FrameHold {
-  name FrameHold5
+  name FrameHold3
   label "x_d_0_info\['exp']"
   xpos 1610
   ypos 1874
@@ -380,14 +381,14 @@ push $N401e3500
  Merge2 {
   inputs 2
   operation minus
-  name Merge6
+  name Merge3
   xpos 1500
   ypos 1934
  }
  Merge2 {
   inputs 2
   operation plus
-  name Merge7
+  name Merge4
   xpos 1390
   ypos 1982
  }
@@ -399,17 +400,17 @@ push $N401e3500
   resize none
   center false
   filter impulse
-  name Reformat5
+  name Reformat4
   label delta_new
   xpos 1390
   ypos 2096
  }
-push $N3ec9bb10
+push $N3fccf800
  Crop {
   box {0 254 9 255}
   reformat true
   crop false
-  name Crop5
+  name Crop10
   label Rs
   xpos 950
   ypos 1256
@@ -427,70 +428,70 @@ push $N3ec9bb10
   box {0 0 9 2}
   reformat true
   crop false
-  name Crop1
+  name Crop11
   xpos 1940
   ypos 878
  }
  Rectangle {
   area {0 0 1 2}
   color {{"\[value Card3D1.matrix.0]"}}
-  name RectangleA0
+  name Rectangle3
   xpos 1940
   ypos 926
  }
  Rectangle {
   area {1 0 2 2}
   color {{"\[value Card3D1.matrix.1]"}}
-  name RectangleA1
+  name Rectangle4
   xpos 1940
   ypos 974
  }
  Rectangle {
   area {2 0 3 2}
   color {{"\[value Card3D1.matrix.3]"}}
-  name RectangleA2
+  name Rectangle5
   xpos 1940
   ypos 1022
  }
  Rectangle {
   area {3 0 4 2}
   color {{"\[value Card3D1.matrix.4]"}}
-  name RectangleA3
+  name Rectangle6
   xpos 1940
   ypos 1070
  }
  Rectangle {
   area {4 0 5 2}
   color {{"\[value Card3D1.matrix.5]"}}
-  name RectangleA4
+  name Rectangle7
   xpos 1940
   ypos 1118
  }
  Rectangle {
   area {5 0 6 2}
   color {{"\[value Card3D1.matrix.6]"}}
-  name RectangleA5
+  name Rectangle8
   xpos 1940
   ypos 1166
  }
  Rectangle {
   area {6 0 7 2}
   color {{"\[value Card3D1.matrix.8]"}}
-  name RectangleA6
+  name Rectangle9
   xpos 1940
   ypos 1214
  }
  Rectangle {
   area {7 0 8 4}
   color {{"\[value Card3D1.matrix.9]"}}
-  name RectangleA7
+  name Rectangle10
   xpos 1940
   ypos 1262
  }
  Rectangle {
   area {8 0 9 2}
   color {{"\[value Card3D1.matrix.10]"}}
-  name RectangleA8
+  name Rectangle11
   xpos 1940
   ypos 1310
  }
@@ -501,13 +502,13 @@ push $N3ec9bb10
   box_fixed true
   resize distort
   filter impulse
-  name Reformat9
+  name Reformat5
   xpos 1940
   ypos 1358
  }
-push $N3cf27ce0
+push $N816ba210
  FrameHold {
-  name FrameHold2
+  name FrameHold4
   xpos 1720
   ypos 1088
  }
@@ -515,23 +516,23 @@ push $N3cf27ce0
   box {0 254 9 255}
   reformat true
   crop false
-  name Crop41
+  name Crop12
   label R_d_0
   xpos 1720
   ypos 1160
  }
  Dot {
-  name Dot16
+  name Dot8
   xpos 1754
   ypos 1314
  }
-set N603b2230 [stack 0]
+set N34ad1850 [stack 0]
  Dot {
-  name Dot15
+  name Dot9
   xpos 1864
   ypos 1362
  }
-push $N603b2230
+push $N34ad1850
  BlinkScript {
   inputs 2
   recompileCount 36
@@ -542,7 +543,7 @@ push $N603b2230
   rebuild ""
   MMult_transpose_b true
   rebuild_finalise ""
-  name BlinkScript5
+  name BlinkScript1
   label transpose_b
   xpos 1720
   ypos 1418
@@ -556,7 +557,7 @@ push $N603b2230
   useGPUIfAvailable false
   rebuild ""
   rebuild_finalise ""
-  name BlinkScript1
+  name BlinkScript2
   xpos 1720
   ypos 1520
  }
@@ -569,16 +570,16 @@ push $N603b2230
   useGPUIfAvailable false
   rebuild ""
   rebuild_finalise ""
-  name BlinkScript4
+  name BlinkScript3
   xpos 1720
   ypos 1592
  }
-push $N3ec9bb10
+push $N3fccf800
  Crop {
   box {0 253 63 254}
   reformat true
   crop false
-  name Crop4
+  name Crop13
   label x_c_s
   xpos 840
   ypos 1256
@@ -594,7 +595,7 @@ push $N3ec9bb10
   format "63 1 0 0 63 1 1 "
   specifiedFormat true
   rebuild_finalise ""
-  name BlinkScript6
+  name BlinkScript4
   label "\[21x3] * \[3x3]"
   xpos 1720
   ypos 1658
@@ -602,40 +603,40 @@ push $N3ec9bb10
  Merge2 {
   inputs 2
   operation plus
-  name Merge12
+  name Merge5
   xpos 1720
   ypos 2126
  }
-push $N3ec9bb10
+push $N3fccf800
  Crop {
   box {0 250 1 251}
   reformat true
   crop false
-  name Crop32
+  name Crop14
   label "x_s_info\['scale']"
   xpos 620
   ypos 1256
  }
  NoOp {
-  name NoOp19
+  name NoOp4
   label "x_s_info\['scale']"
   xpos 950
   ypos 1832
  }
-push $N604eeb20
+push $N81626820
  Crop {
   box {0 250 1 251}
   reformat true
   crop false
-  name Crop34
+  name Crop15
   label "x_d_info\['scale']"
   xpos 1060
   ypos 1832
  }
-set N400c1090 [stack 0]
-push $N400c1090
+set N317b45e0 [stack 0]
+push $N317b45e0
  FrameHold {
-  name FrameHold7
+  name FrameHold5
   label " x_d_0_info\['scale']"
   xpos 1170
   ypos 1874
@@ -643,14 +644,14 @@ push $N400c1090
  Merge2 {
   inputs 2
   operation divide
-  name Merge10
+  name Merge6
   xpos 1060
   ypos 1934
  }
  Merge2 {
   inputs 2
   operation multiply
-  name Merge11
+  name Merge7
   xpos 950
   ypos 1982
  }
@@ -668,19 +669,19 @@ push $N400c1090
  Merge2 {
   inputs 2
   operation multiply
-  name Merge13
+  name Merge8
   xpos 1720
   ypos 2222
  }
  Merge2 {
   inputs 2
   operation plus
-  name Merge20
+  name Merge9
   xpos 1720
   ypos 2318
  }
  NoOp {
-  name NoOp25
+  name NoOp5
   label x_d_i_new
   xpos 1720
   ypos 2384
@@ -688,7 +689,7 @@ push $N400c1090
  Grade {
   inputs 1+1
   black_clamp false
-  name Grade17
+  name Grade1
   xpos 1720
   ypos 2486
   disable true
@@ -696,14 +697,14 @@ push $N400c1090
  Grade {
   inputs 1+1
   black_clamp false
-  name Grade18
+  name Grade2
   xpos 1720
   ypos 2582
   disable true
  }
  Crop {
   box {0 0 63 1}
-  name Crop37
+  name Crop16
   xpos 1720
   ypos 2678
  }
@@ -711,7 +712,7 @@ push $N400c1090
   translate {0 62}
   filter impulse
   black_outside false
-  name Transform6
+  name Transform4
   xpos 1720
   ypos 2750
  }
@@ -719,7 +720,7 @@ push $N400c1090
   inputs 0
   channels rgb
   format "64 64 0 0 64 64 1 square_64"
-  name Constant2
+  name Constant1
   label 64x64
   xpos 1830
   ypos 2697
@@ -728,7 +729,7 @@ push $N400c1090
   inputs 2
   operation plus
   bbox B
-  name Merge2
+  name Merge10
   xpos 1720
   ypos 2822
  }
@@ -736,14 +737,14 @@ push $N400c1090
   inputs 2
   operation plus
   bbox B
-  name Merge3
+  name Merge11
   xpos 510
   ypos 3038
  }
  Inference {
   modelFile "\[lsearch -inline \[plugins -all live_portrait_retargeting_stitching.cat] *.cat]"
   serialiseKnob {}
-  name Inference7
+  name Inference4
   tile_color 0xdfff00ff
   label LivePortrait_Stitching
   xpos 510
@@ -753,7 +754,7 @@ push $N400c1090
   fromInput1 {{0} B}
   fromInput2 {{0} B}
   mappings "4 black -1 -1 rgba.red 0 0 black -1 -1 rgba.green 0 1 black -1 -1 rgba.alpha 0 3 rgba.red 0 0 rgba.blue 0 2"
-  name Shuffle2
+  name Shuffle5
   xpos 510
   ypos 3158
  }
@@ -762,7 +763,7 @@ push $N400c1090
   center {128 128}
   filter impulse
   black_outside false
-  name Transform8
+  name Transform5
   xpos 510
   ypos 3206
  }
@@ -772,13 +773,13 @@ push $N400c1090
   xpos 510
   ypos 3248
  }
-push $N3fd17740
+push $N94506e00
  Transform {
   translate {0 1023}
   center {31.5 0.5}
   filter impulse
   black_outside false
-  name Transform18
+  name Transform6
   xpos 400
   ypos 2918
  }
@@ -786,28 +787,28 @@ push $N3fd17740
   fromInput1 {{0} B}
   fromInput2 {{0} B}
   mappings "4 black -1 -1 rgba.red 0 0 black -1 -1 rgba.green 0 1 rgba.blue 0 2 rgba.blue 0 2 rgba.alpha 0 3 rgba.alpha 0 3"
-  name Shuffle7
+  name Shuffle6
   xpos 400
   ypos 2966
  }
  NoOp {
-  name NoOp22
+  name NoOp7
   label x_s
   xpos 400
   ypos 3008
  }
-push $N605dff60
+push $Nd42b6630
  Inference {
   modelFile "\[lsearch -inline \[plugins -all live_portrait_appearance_feature_extractor.cat] *.cat]"
   serialiseKnob {}
-  name Inference3
+  name Inference5
   tile_color 0xdfff00ff
   label LivePortrait_AppearanceFeatureExtractor
   xpos 290
   ypos 2912
  }
  NoOp {
-  name NoOp26
+  name NoOp8
   label f_s
   xpos 290
   ypos 3008
@@ -816,7 +817,7 @@ push $N605dff60
   inputs 2
   operation plus
   bbox B
-  name Merge4
+  name Merge12
   label "f_s, x_s"
   xpos 290
   ypos 3080
@@ -825,7 +826,7 @@ push $N605dff60
   inputs 2
   operation plus
   bbox B
-  name Merge5
+  name Merge13
   label "f_s, x_s, x_d_i_new"
   xpos 290
   ypos 3392
@@ -833,7 +834,7 @@ push $N605dff60
  Inference {
   modelFile "\[lsearch -inline \[plugins -all live_portrait_warping_module.cat] *.cat]"
   serialiseKnob {}
-  name Inference5
+  name Inference6
   tile_color 0xdfff00ff
   label LivePortrait_WarpDecoder
   xpos 290
@@ -842,7 +843,7 @@ push $N605dff60
  Inference {
   modelFile "\[lsearch -inline \[plugins -all live_portrait_spade_generator.cat] *.cat]"
   serialiseKnob {}
-  name Inference6
+  name Inference7
   tile_color 0xdfff00ff
   label LivePortrait_SpadeGenerator
   xpos 290
@@ -854,17 +855,17 @@ push $N605dff60
   xpos 290
   ypos 3662
  }
-set N608c2000 [stack 0]
-push $N3bfdefc0
+set N3f20de50 [stack 0]
+push $N5425caf0
  Reformat {
   format "512 512 0 0 512 512 1 square_512"
   filter Keys
-  name Reformat4
+  name Reformat7
   xpos 2160
   ypos 608
  }
  Dot {
-  name Dot5
+  name Dot10
   xpos 2194
   ypos 3354
  }
@@ -880,17 +881,16 @@ push $N3bfdefc0
  }
  PostageStamp {
   name PostageStamp1
-  selected true
   xpos 290
   ypos 3855
   postage_stamp true
  }
  Dot {
-  name Dot10
+  name Dot11
   xpos 324
   ypos 4146
  }
-push $N608c2000
+push $N3f20de50
  Roto {
   output alpha
   curves {{{v x3f99999a}
@@ -960,7 +960,7 @@ push $N608c2000
   lifetime_end 41
   motionblur_shutter_offset_type centred
   source_black_outside true
-  name Roto2
+  name Roto1
   xpos 180
   ypos 3728
  }
@@ -971,7 +971,7 @@ push $N608c2000
  }
  Mirror2 {
   flip true
-  name Mirror2_8
+  name Mirror2_1
   xpos 180
   ypos 3878
  }
@@ -992,7 +992,7 @@ push $N608c2000
   from2 {256 0}
   from3 {256 256}
   from4 {0 256}
-  name CornerPin2D2
+  name CornerPin2D1
   xpos 180
   ypos 3950
  }
@@ -1003,19 +1003,19 @@ push $N608c2000
   resize none
   center false
   pbb true
-  name Reformat15
+  name Reformat8
   xpos 180
   ypos 4022
  }
  Mirror2 {
   flip true
-  name Mirror2_9
+  name Mirror2_2
   xpos 180
   ypos 4094
  }
-push $N3ec85f50
+push $N2ebbb6f0
  Dot {
-  name Dot2
+  name Dot12
   xpos -6
   ypos 4050
  }
@@ -1028,8 +1028,8 @@ push $N3ec85f50
  }
  Switch {
   inputs 2
-  name Switch1
   which {{parent.view}}
+  name Switch1
   xpos -40
   ypos 4286
  }
@@ -1038,19 +1038,19 @@ push $N3ec85f50
   xpos -40
   ypos 4358
  }
-push $N3f9c0880
+push $N946cb8d0
  Shuffle2 {
   fromInput1 {{0} B}
   fromInput2 {{0} B}
   mappings "4 rgba.alpha 0 3 rgba.red 0 0 rgba.alpha 0 3 rgba.green 0 1 rgba.alpha 0 3 rgba.blue 0 2 rgba.alpha 0 3 rgba.alpha 0 3"
-  name Shuffle12
+  name Shuffle7
   xpos 70
   ypos 3782
  }
  Crop {
   box {0 0 9 256}
   reformat true
-  name Crop24
+  name Crop17
   xpos 70
   ypos 3830
  }
@@ -1066,11 +1066,11 @@ push $N3f9c0880
   xpos 70
   ypos 3872
  }
-push $N60276bd0
+push $Nc99833e0
  Inference {
   modelFile "\[lsearch -inline \[plugins -all live_portrait_face_detection.cat] *.cat]"
   serialiseKnob {}
-  name Inference2
+  name Inference8
   tile_color 0xdfff00ff
   label LivePortrait_FaceDetection
   xpos 1610

@@ -6,7 +6,7 @@ Group {
  addUserKnob {26 outputOptions_divider l "<b>Output Options</b>"}
  addUserKnob {4 view l Output t "Determines the output of the node.\n." M {"Final Result" "Side by Side Preview" "" "" "" "" "" "" ""}}
  addUserKnob {20 infoTab l Info}
- addUserKnob {26 toolName l "" +STARTLINE T "<font size='7'>LIVE PORTRAIT</font><br>v0.8.0 | Released 2024-10-10"}
+ addUserKnob {26 toolName l "" +STARTLINE T "<font size='7'>LIVE PORTRAIT</font><br>v0.8.1 | Released 2024-10-10"}
  addUserKnob {26 projectUrl l "" +STARTLINE T "<a href=\"https://github.com/rafaelperez/LivePortrait-for-Nuke\"><span style=\"color:#C8C8C8;\">https://github.com/rafaelperez/LivePortrait-for-Nuke</a>"}
  addUserKnob {26 ""}
  addUserKnob {26 authorName l "" +STARTLINE T "Rafael Silva"}

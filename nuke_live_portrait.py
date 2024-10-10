@@ -978,12 +978,6 @@ def trace_appearance_feature_extractor():
         appearance_feature_extractor.eval()
         appearance_feature_extractor = torch.jit.script(appearance_feature_extractor)
 
-    LOGGER.info("Traced appearance_feature_extractor")
-
-    destination = "./build/appearance_feature_extractor.pt"
-    torch.jit.save(appearance_feature_extractor, destination)
-    LOGGER.info("Model saved to: %s", destination)
-
     return appearance_feature_extractor
 
 
@@ -1000,12 +994,6 @@ def trace_motion_extractor():
     with torch.no_grad():
         motion_extractor.eval()
         motion_extractor = torch.jit.script(motion_extractor)
-
-    LOGGER.info("Traced motion_extractor")
-
-    destination = "./build/motion_extractor.pt"
-    torch.jit.save(motion_extractor, destination)
-    LOGGER.info("Model saved to: %s", destination)
 
     return motion_extractor
 
@@ -1024,12 +1012,6 @@ def trace_warping_module():
         warping_module.eval()
         warping_module = torch.jit.script(warping_module)
 
-    LOGGER.info("Traced warping_module")
-
-    destination = "./build/warping_module.pt"
-    torch.jit.save(warping_module, destination)
-    LOGGER.info("Model saved to: %s", destination)
-
     return warping_module
 
 
@@ -1046,12 +1028,6 @@ def trace_spade_generator():
     with torch.no_grad():
         spade_generator.eval()
         spade_generator = torch.jit.script(spade_generator)
-
-    LOGGER.info("Traced spade_generator")
-
-    destination = "./build/spade_generator.pt"
-    torch.jit.save(spade_generator, destination)
-    LOGGER.info("Model saved to: %s", destination)
 
     return spade_generator
 
@@ -1075,19 +1051,6 @@ def trace_stitching_retargeting_module():
         lip_trace = torch.jit.script(lip)
         eye_trace = torch.jit.script(eye)
 
-    LOGGER.info("Traced stitching_retargeting_module")
-
-    destination = "./build/stitching_retargeting_module_stitching.pt"
-    torch.jit.save(stitching_trace, destination)
-
-    destination = "./build/stitching_retargeting_module_eye.pt"
-    torch.jit.save(eye_trace, destination)
-
-    destination = "./build/stitching_retargeting_module_lip.pt"
-    torch.jit.save(lip_trace, destination)
-
-    LOGGER.info("Model saved to: %s", destination)
-
     return stitching_trace, lip_trace, eye_trace
 
 
@@ -1107,8 +1070,7 @@ def trace_face_detection_nuke(run_test=False):
 
     def test_forward():
         with torch.no_grad():
-            m = torch.load("./build/debug/maluco.pt").cuda()
-            # m = torch.randn(1, 3, 720, 1280).cuda()
+            m = torch.randn(1, 3, 720, 1280).cuda()
             model.eval()
             out = model(m)
             LOGGER.info(out.shape)
@@ -1117,7 +1079,7 @@ def trace_face_detection_nuke(run_test=False):
         test_forward()
 
     model_traced = torch.jit.script(model)
-    destination = "./build/face_detection_nuke.pt"
+    destination = "./nuke/face_detection_nuke.pt"
     torch.jit.save(model_traced, destination)
 
     LOGGER.info("Model saved to: %s", destination)
@@ -1139,7 +1101,7 @@ def trace_appearance_feature_extractor_nuke(run_test=False):
 
     model_traced = torch.jit.script(model)
 
-    destination = "./build/appearance_feature_extractor_nuke.pt"
+    destination = "./nuke/appearance_feature_extractor_nuke.pt"
     torch.jit.save(model_traced, destination)
     LOGGER.info("Model saved to: %s", destination)
 
@@ -1159,7 +1121,7 @@ def trace_motion_extractor_nuke(run_test=False):
     if run_test:
         test_forward()
 
-    destination = "./build/motion_extractor_nuke.pt"
+    destination = "./nuke/motion_extractor_nuke.pt"
     torch.jit.save(model_traced, destination)
     LOGGER.info("Model saved to: %s", destination)
     return model_traced
@@ -1180,7 +1142,7 @@ def trace_warping_module_nuke(run_test=False):
         test_forward()
 
     model_traced = torch.jit.script(model)
-    destination = "./build/warping_module_nuke.pt"
+    destination = "./nuke/warping_module_nuke.pt"
     torch.jit.save(model_traced, destination)
     LOGGER.info("Model saved to: %s", destination)
 
@@ -1200,7 +1162,7 @@ def trace_spade_generator_nuke(run_test=False):
         test_forward()
 
     model_traced = torch.jit.script(model)
-    destination = "./build/spade_generator_nuke.pt"
+    destination = "./nuke/spade_generator_nuke.pt"
     torch.jit.save(model_traced, destination)
     LOGGER.info("Model saved to: %s", destination)
 
@@ -1221,7 +1183,7 @@ def trace_stitching_retargeting_module_nuke(run_test=False):
         test_forward()
 
     model_traced = torch.jit.script(model)
-    destination = "./build/stitching_retargeting_module_stitching_nuke.pt"
+    destination = "./nuke/retargeting_module_stitching_nuke.pt"
     torch.jit.save(model_traced, destination)
     LOGGER.info("Model saved to: %s", destination)
 

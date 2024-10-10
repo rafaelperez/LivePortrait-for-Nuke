@@ -1,0 +1,13 @@
+{
+    "minimum_nuke_version_required": 14.0,
+    "version": 1,
+    "category": "Stylization",
+    "description": "LivePortrait - https://github.com/rafaelperez/LivePortrait-for-Nuke",
+    "cats": [
+        {
+            "filepath": "liveportrait.gizmo",
+            "name": "LivePortrait",
+            "icon": "liveportrait.png"
+        }
+    ]
+}

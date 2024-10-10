@@ -1,0 +1,101 @@
+BackdropNode {
+ inputs 0
+ name BackdropNode3
+ tile_color 0x555555ff
+ label "<center><strong>CATFILE CREATORS"
+ note_font_size 16
+ note_font_color 0x222222ff
+ xpos -120
+ ypos 1274
+ bdwidth 461
+ bdheight 332
+}
+CatFileCreator {
+ inputs 0
+ torchScriptFile "\[python \{nuke.script_directory()\}]/face_detection_nuke.pt"
+ catFile "\[python \{nuke.script_directory()\}]/Cattery/LivePortrait/live_portrait_face_detection.cat"
+ channelsIn rgba.red,rgba.green,rgba.blue
+ channelsOut rgba.red,rgba.green,rgba.blue,rgba.alpha
+ modelId LivePortrait_FaceDetection
+ name CatFileCreator1
+ tile_color 0xdfff00ff
+ label LivePortrait_FaceDetection
+ xpos -40
+ ypos 1352
+ postage_stamp false
+ addUserKnob {20 User}
+ addUserKnob {7 crop_cfg_scale R 0.5 3}
+ crop_cfg_scale 2.3
+}
+CatFileCreator {
+ inputs 0
+ torchScriptFile "\[python \{nuke.script_directory()\}]/appearance_feature_extractor_nuke.pt"
+ catFile "\[python \{nuke.script_directory()\}]/Cattery/LivePortrait/live_portrait_appearance_feature_extractor.cat"
+ channelsIn rgba.red,rgba.green,rgba.blue
+ channelsOut "rgba.red, rgba.green"
+ modelId LivePortrait_AppearanceFeatureExtractor
+ outputScale 4
+ name CatFileCreator2
+ tile_color 0xdfff00ff
+ label LivePortrait_AppearanceFeatureExtractor
+ xpos -40
+ ypos 1424
+ postage_stamp false
+}
+CatFileCreator {
+ inputs 0
+ torchScriptFile "\[python \{nuke.script_directory()\}]/motion_extractor_nuke.pt"
+ catFile "\[python \{nuke.script_directory()\}]/Cattery/LivePortrait/live_portrait_motion_extractor.cat"
+ channelsIn rgba.red,rgba.green,rgba.blue
+ channelsOut rgba.red
+ modelId LivePortrait_MotionExtractor
+ name CatFileCreator3
+ tile_color 0xdfff00ff
+ label LivePortrait_MotionExtractor
+ xpos -40
+ ypos 1496
+ postage_stamp false
+}
+CatFileCreator {
+ inputs 0
+ torchScriptFile "\[python \{nuke.script_directory()\}]/warping_module_nuke.pt"
+ catFile "\[python \{nuke.script_directory()\}]/Cattery/LivePortrait/live_portrait_warping_module.cat"
+ channelsIn rgba.red,rgba.green,rgba.blue
+ channelsOut rgba.red
+ modelId LivePortrait_WarpDecoder
+ name CatFileCreator4
+ tile_color 0xdfff00ff
+ label LivePortrait_WarpDecoder
+ xpos 180
+ ypos 1352
+ postage_stamp false
+}
+CatFileCreator {
+ inputs 0
+ torchScriptFile "\[python \{nuke.script_directory()\}]/spade_generator_nuke.pt"
+ catFile "\[python \{nuke.script_directory()\}]/Cattery/LivePortrait/live_portrait_spade_generator.cat"
+ channelsIn rgba.red
+ channelsOut rgba.red,rgba.green,rgba.blue
+ modelId LivePortrait_SpadeGenerator
+ outputScale 0.5
+ name CatFileCreator5
+ tile_color 0xdfff00ff
+ label LivePortrait_SpadeGenerator
+ xpos 180
+ ypos 1424
+ postage_stamp false
+}
+CatFileCreator {
+ inputs 0
+ torchScriptFile "\[python \{nuke.script_directory()\}]/retargeting_module_stitching_nuke.pt"
+ catFile "\[python \{nuke.script_directory()\}]/Cattery/LivePortrait/live_portrait_retargeting_stitching.cat"
+ channelsIn rgba.red
+ channelsOut rgba.red
+ modelId LivePortrait_Stitching
+ name CatFileCreator6
+ tile_color 0xdfff00ff
+ label LivePortrait_Stitching
+ xpos 180
+ ypos 1496
+ postage_stamp false
+}

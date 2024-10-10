@@ -1,6 +1,6 @@
 # LivePortrait for Nuke
 
-## Introduction 📖
+## Introduction
 
 
 This project integrates  [**LivePortrait**: Efficient Portrait Animation with Stitching and Retargeting Control](https://liveportrait.github.io/) to **The Foundry's Nuke**, enabling artists to easily create animated portraits through advanced facial expression and motion transfer.
@@ -21,7 +21,6 @@ The current version supports video-to-image animation transfer. Future developme
 </div>
 
 <p align="center">
-  <img src="./assets/docs/showcase2.gif" alt="showcase">
   <br>
   🔥 For more results, visit the project <a href="https://liveportrait.github.io/"><strong>homepage</strong></a> 🔥
 </p>
@@ -29,7 +28,7 @@ The current version supports video-to-image animation transfer. Future developme
 
 ## Compatibility
 
-**Nuke 15.1+**, tested on **Linux**.
+**Nuke 14.0++**, tested on **Linux**.
 
 
 ## Features
